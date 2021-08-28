@@ -10,12 +10,13 @@ function Feed() {
   const cookie = key=>((new RegExp((key || '=')+'=(.*?); ','gm')).exec(document.cookie+'; ') ||['',null])[1]
 
   useEffect(() => {
-    let auth_token = cookie('auth_token')
-    if(auth_token){
-      getPosts()
-    }else{
-      logout()
-    }
+    // let auth_token = cookie('auth_token')
+    // if(auth_token){
+    //   getPosts()
+    // }else{
+    //   logout()
+    // }
+    getPosts()
     
   }, []);
 
