@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import "../../Css/Feed/TweetBox.css";
 import { Avatar, Button } from "@material-ui/core";
+import axios from 'axios'
 
-function TweetBox() {
+function TweetBox(getTweets) {
+  const cookie = key=>((new RegExp((key || '=')+'=(.*?); ','gm')).exec(document.cookie+'; ') ||['',null])[1]
   const [tweetMessage, setTweetMessage] = useState("");
-  const [tweetImage, setTweetImage] = useState("");
+  const [tweetList,setTweetList] = useState([])
 
   const sendTweet = (e) => {
     e.preventDefault();
+    const fd = new FormData();
+    fd.append('user_id', cookie('userId'))
+    fd.append('description', tweetMessage)
+    axios.post(`http://localhost:5000/api/v1/post/insert`,fd)
+    .then(resp => {
+        if (resp?.data?.status === 200) {
+          setTweetMessage("");
+          getTweets()
+        }
+    })
 
-    
-
-    setTweetMessage("");
-    setTweetImage("");
   };
 
   return (
