@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Login from './Components/Login/Login';
 import Sidebar from './Components/Sidebar/Sidebar';
 import Feed from './Components/Feed/Feed';
+import UsersList from './Components/UsersList/UsersList';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
               <Route path="/home">
                   <Sidebar />
                   <Feed />
+              </Route>
+              <Route path="/users">
+                  <Sidebar />
+                  <UsersList />
               </Route>
             </Switch>
           </div>

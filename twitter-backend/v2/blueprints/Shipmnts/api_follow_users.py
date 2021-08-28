@@ -24,7 +24,24 @@ def getUsersList():
 
     user_id = request.form.get('user_id')
 
-    return get_users_list(user_id,mysql)
+    get_followed_users_list =  get_followed_list(user_id,mysql)
+
+    followed_list = get_followed_users_list['data']
+
+    get_total_users = get_users_list(user_id,mysql)
+
+    total_users = get_total_users['data']
+
+    unfollowed_users = set(total_users) - set(followed_list)
+
+    unfollowed_list = list(unfollowed_users)
+
+    return({
+        "status":200,
+        "message" : "Users List",
+        "followed_users" : followed_list,
+        "unfollowed_users" : unfollowed_list
+    })
 
 
 

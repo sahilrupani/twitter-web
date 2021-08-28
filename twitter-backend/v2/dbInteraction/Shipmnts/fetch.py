@@ -116,3 +116,24 @@ def get_users_list(user_id, mysql):
             'status':404,
             'message':"Data not found"
         })
+
+
+def get_followed_list(user_id, mysql):
+    cursor = mysql.connection.cursor()
+    cursor.execute("""SELECT f.is_follow, u.* from user_followers f LEFT JOIN user_account u on f.followed_user_id = u.user_id WHERE f.user_id = (%s) """,[user_id])
+    result = cursor.fetchall()
+    cursor.close()
+    items = []
+    if(len(result) > 0):
+        for item in result:
+            item['created_on'] = datetime.datetime.strftime((item["created_on"]), "%d %b, %Y")
+            items.append(item)
+        return dict({
+            'status':200,
+            'message':"Success",
+        })
+    else:
+        return dict({
+            'status':404,
+            'message':"Data not found"
+        })

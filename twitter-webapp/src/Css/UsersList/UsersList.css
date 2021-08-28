@@ -1,0 +1,37 @@
+.users {
+  flex: 0.8;
+  border-right: 1px solid var(--twitter-background);
+  min-width: fit-content;
+  overflow-y: scroll;
+}
+
+.users::-webkit-scrollbar {
+  display: none;
+}
+.users__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+}
+
+.users__body {
+  padding: 15px 20px;
+}
+
+.users_card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  flex: 1;
+  width: 100%;
+  grid-template-columns: 65% 35%;
+  padding: 10px;
+}
+
+.users_card button {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+}

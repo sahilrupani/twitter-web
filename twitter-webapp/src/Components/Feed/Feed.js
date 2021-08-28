@@ -10,9 +10,21 @@ function Feed() {
   const cookie = key=>((new RegExp((key || '=')+'=(.*?); ','gm')).exec(document.cookie+'; ') ||['',null])[1]
 
   useEffect(() => {
-    getPosts()
+    let auth_token = cookie('auth_token')
+    if(auth_token){
+      getPosts()
+    }else{
+      logout()
+    }
+    
   }, []);
 
+  const logout = () => {
+    document.cookie = 'emailId' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'userId' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'auth_token' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    window.location.replace("http://localhost:3000/login")
+  }
 
   const getPosts = () => {
 
@@ -20,7 +32,7 @@ function Feed() {
       method: "GET",
       url : "http://localhost:5000/api/v1/post/get",
       params : {
-          user_id: this.cookie("userId")
+          user_id: cookie("userId")
       }
       
     }).then((resp) => {
@@ -41,6 +53,10 @@ function Feed() {
       <TweetBox 
         getPosts={getPosts}
       />
+
+      <div className="feed__header">
+        <h2>Posts</h2>
+      </div>
 
     
         {posts.map((post) => (

@@ -25,3 +25,14 @@ def insert_post(user_id,description,mysql):
         'status':200,
         'message':"Success inserted Post",
     })
+
+
+def update_user_followers(user_id,followed_user_id,is_follow,mysql):
+    cursor = mysql.connection.cursor()
+    cursor.execute("""INSERT INTO user_followers(user_id,followed_user_id,is_follow) VALUES (%s,%s,%s)""",[user_id,followed_user_id,is_follow])
+    mysql.connection.commit()
+    cursor.close()
+    return dict({
+        'status':200,
+        'message':"Success Added Follower",
+    })
