@@ -7,10 +7,9 @@ import datetime, json
 from time import time
 import uuid
 import numpy as np
-import cv2
 import hashlib
 import sys
-import logging
+
 
 
 

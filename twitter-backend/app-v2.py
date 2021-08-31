@@ -4,7 +4,7 @@ import os
 
 
 
-from v2.db import created_app
+from v2.db import *
 
 #Import all blueprints here
 # from v2.blueprints.external_api_blueprint import external_api
@@ -30,6 +30,6 @@ mysql = MySQL()
 
 
 if __name__ == '__main__':
-    #app.run(port=80)
-    app.run(host='0.0.0.0', port=80, debug=True)
+    #app.run(port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
