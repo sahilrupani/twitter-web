@@ -29,7 +29,7 @@ function Login() {
                 document.cookie = `userId=${resp?.data?.user_id}; path=/`;
                 document.cookie = `auth_token=${resp.data?.sso_token}; path=/`;
                 
-                window.location.replace("http://localhost:3000/home")
+                window.location.replace("http://34.93.69.186/home")
             }
         })
     }
@@ -49,7 +49,7 @@ function Login() {
                 document.cookie = `userId=${resp?.data?.data?.user_id}; path=/`;
                 document.cookie = `auth_token=${resp.data?.sso_token}; path=/`;
                 
-                window.location.replace("http://localhost:3000/home")
+                window.location.replace("http://34.93.69.186/home")
             }
         })
     }

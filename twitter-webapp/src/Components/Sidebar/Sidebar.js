@@ -13,7 +13,7 @@ function Sidebar() {
     document.cookie = 'emailId' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'userId' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'auth_token' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    window.location.replace("http://localhost:3000/login")
+    window.location.replace("http://34.93.69.186/login")
   }
 
   return (
