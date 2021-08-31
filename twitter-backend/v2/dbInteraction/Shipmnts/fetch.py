@@ -64,7 +64,7 @@ def get_followed_users_list(user_id, mysql):
 
 def get_users_post(user_id, mysql):
     cursor = mysql.connection.cursor()
-    cursor.execute("""SELECT * from user_post WHERE user_id = (%s) AND active=1""",[user_id])
+    cursor.execute("""SELECT * from user_post WHERE user_id = (%s) AND active=1 ORDER BY created_at desc""",[user_id])
     result = cursor.fetchall()
     cursor.close()
     items = []
