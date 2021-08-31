@@ -9,7 +9,7 @@ from collections import OrderedDict
 
 def insert_into_user_account(user_id, email_id, sso_token, password,user_name, mysql):
     cursor = mysql.connection.cursor()
-    cursor.execute("""INSERT INTO user_account(user_id, email_id, sso_token, password,user_name, active) VALUES (%s,%s,%s,%s,%s,%s)""",[user_id, email_id, sso_token, password,user_name, 1])
+    cursor.execute("""INSERT INTO user_account(user_id, email_id, sso_token, password,user_name) VALUES (%s,%s,%s,%s,%s)""",[user_id, email_id, sso_token, password,user_name])
     mysql.connection.commit()
     cursor.close()
     return True

@@ -1,5 +1,5 @@
-from dbInteraction.Shipmnts.fetch import *
-from dbInteraction.Shipmnts.insert import *
+from v2.dbInteraction.Shipmnts.fetch import *
+from v2.dbInteraction.Shipmnts.insert import *
 from flask import Blueprint
 from flask import Flask, render_template, request, send_from_directory, url_for,abort
 from flask_mysqldb import MySQL
@@ -14,12 +14,12 @@ import logging
 
 
 
-api_post = Blueprint('user', __name__, url_prefix='/api/v1/post')
+api_posts = Blueprint('api_post', __name__, url_prefix='/api/v1/post')
 mysql = MySQL()
 
 
 
-@api_post.route("/insert", methods=['POST'])
+@api_posts.route("/insert", methods=['POST'])
 def insertPost():
 
     user_id = request.form.get('user_id')
@@ -30,7 +30,7 @@ def insertPost():
     return insert_post(user_id,description,mysql)
 
 
-@api_post.route("/get", methods=['GET'])
+@api_posts.route("/get", methods=['GET'])
 def getUsersPost():
 
     user_id = request.form.get('user_id')

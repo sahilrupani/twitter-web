@@ -1,21 +1,15 @@
 import math, random, string
 from flask import Blueprint
 
-from dbInteraction.Shipmnts.fetch import *
-from dbInteraction.Shipmnts.insert import *
+from v2.dbInteraction.Shipmnts.fetch import *
+from v2.dbInteraction.Shipmnts.insert import *
 from flask import Flask, render_template, request, send_from_directory, url_for,abort
 from flask_mysqldb import MySQL
-import datetime, json
-from time import time
 from uuid import uuid4
-import numpy as np
-import cv2
 import hashlib
-import sys
-import logging
 
 
-api_user = Blueprint('user', __name__, url_prefix='/api/v1/user')
+api_user = Blueprint('api_user', __name__, url_prefix='/api/v1/user')
 mysql = MySQL() 
 
 

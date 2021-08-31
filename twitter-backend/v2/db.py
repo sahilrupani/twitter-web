@@ -1,10 +1,8 @@
 
 import warnings
 import os
-import newrelic.agent
-newrelic.agent.initialize('./newrelic.ini')
+
 from time import time
-import logging, logging.config
 
 #Import all blueprints here
 from v2.blueprints.Shipmnts.api_follow_users import api_follow_users
@@ -21,19 +19,14 @@ def created_app():
     
     main_app = Flask(__name__)
     CORS(main_app)
-    # main_app.config.from_pyfile('v1/config.py')
     main_app.config['MYSQL_USER'] = 'root'
-    
-    logging.config.fileConfig('./v2/Utils/logging.conf', disable_existing_loggers=False)
-
-    logger = logging.getLogger('sample')
     
 
     #Staging
     main_app.config['MYSQL_PASSWORD'] = 'root1234'  
     main_app.config['MYSQL_HOST'] = '35.200.165.249' 
 
-    main_app.config['MYSQL_DB'] = 'eventila'
+    main_app.config['MYSQL_DB'] = 'test'
     main_app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
     mysql = MySQL(main_app)

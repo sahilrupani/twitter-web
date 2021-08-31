@@ -1,20 +1,12 @@
-from dbInteraction.Shipmnts.fetch import *
-from dbInteraction.Shipmnts.insert import *
+from v2.dbInteraction.Shipmnts.fetch import *
+from v2.dbInteraction.Shipmnts.insert import *
 from flask import Blueprint
 from flask import Flask, render_template, request, send_from_directory, url_for,abort
 from flask_mysqldb import MySQL
-import datetime, json
-from time import time
-import uuid
-import numpy as np
-import cv2
-import hashlib
-import sys
-import logging
 
 
 
-api_follow_users = Blueprint('follow_user', __name__, url_prefix='/api/v1/follow-users')
+api_follow_users = Blueprint('api_follow_users', __name__, url_prefix='/api/v1/follow-users')
 mysql = MySQL()
 
 
