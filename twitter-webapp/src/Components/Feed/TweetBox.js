@@ -18,6 +18,7 @@ function TweetBox(getTweets) {
         if (resp?.data?.status === 200) {
           setTweetMessage("");
           // getTweets()
+          window.location.reload()
         }
     })
 

@@ -63,7 +63,7 @@ function Feed() {
         {posts.map((post) => (
           <Post
             key={post.id}
-            displayName={post.user_name}
+            displayName={post.user_id}
             text={post.description}
             avatar={post.avatar}
           />

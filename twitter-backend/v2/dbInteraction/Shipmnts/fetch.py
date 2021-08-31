@@ -39,6 +39,7 @@ def authenticate_user(email_id,password_hash, mysql):
 
 def get_followed_users_list(user_id, mysql):
     followed_user_ids = get_followed_user_ids(user_id, mysql)
+    followed_user_ids.append(user_id)
     if followed_user_ids is None:
         return dict({
             'status':404,
