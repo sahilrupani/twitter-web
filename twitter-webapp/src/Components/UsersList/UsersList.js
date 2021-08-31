@@ -27,15 +27,15 @@ function UsersList() {
       const getUsers = () =>{
         axios({
             method: "GET",
-            url : "http://localhost:5000/api/v1/post/get",
+            url : "http://localhost:5000/api/v1/follow-users/get",
             params : {
                 user_id: cookie("userId")
             }
             
           }).then((resp) => {
             if(resp?.data?.status == 200){
-                setFollowedUsers(resp?.data?.followed_users)
-                setNotFollowedUsers(resp?.data?.unfollowed_users)
+                setFollowedUsers([...followedUsers,resp?.data?.followed_users.data])
+                // setNotFollowedUsers([...notFollowedUsers,resp?.data?.unfollowed_users])
             }else{
               
             }

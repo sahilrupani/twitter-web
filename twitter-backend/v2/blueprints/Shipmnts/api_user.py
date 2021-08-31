@@ -70,4 +70,4 @@ def login():
     hash_object = hashlib.md5(password.encode())
     password_hash = hash_object.hexdigest()
 
-    authenticate_user(email_id,password_hash,mysql)
+    return authenticate_user(email_id,password_hash,mysql)

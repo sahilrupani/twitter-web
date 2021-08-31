@@ -14,7 +14,7 @@ def check_email_exits(email_id, mysql):
         return None
 
 
-def authenticate_user(email_id,password_hash,api_key, mysql):
+def authenticate_user(email_id,password_hash, mysql):
     cursor = mysql.connection.cursor()
     cursor.execute("""SELECT * from user_account WHERE email_id = (%s) AND password =(%s)""",[email_id,password_hash])
     result = cursor.fetchall()
@@ -22,11 +22,13 @@ def authenticate_user(email_id,password_hash,api_key, mysql):
     items = []
     if(len(result) > 0):
         for item in result:
-            item['created_on'] = datetime.datetime.strftime((item["created_on"]), "%d %b, %Y")
+            item['created_at'] = datetime.datetime.strftime((item["created_at"]), "%d %b, %Y")
+            item['updated_at'] = datetime.datetime.strftime((item["updated_at"]), "%d %b, %Y")
             items.append(item)
         return dict({
             'status':200,
             'message':"Success",
+            'data':items[0]
         })
     else:
         return dict({
@@ -61,14 +63,15 @@ def get_followed_users_list(user_id, mysql):
 
 def get_users_post(user_id, mysql):
     cursor = mysql.connection.cursor()
-    cursor.execute("""SELECT * from users_post WHERE user_id = (%s) AND active=1""",[user_id])
+    cursor.execute("""SELECT * from user_post WHERE user_id = (%s) AND active=1""",[user_id])
     result = cursor.fetchall()
     cursor.close()
     items = []
     sku = ''
     if(len(result) > 0):
         for item in result:
-            item['created_on'] = datetime.datetime.strftime((item["created_on"]), "%d %b, %Y - %H:%M:%S")
+            item['created_at'] = datetime.datetime.strftime((item["created_at"]), "%d %b, %Y - %H:%M:%S")
+            item['updated_at'] = datetime.datetime.strftime((item["updated_at"]), "%d %b, %Y")
             items.append(item)
         return dict({
             'status':200,
@@ -105,11 +108,13 @@ def get_users_list(user_id, mysql):
     items = []
     if(len(result) > 0):
         for item in result:
-            item['created_on'] = datetime.datetime.strftime((item["created_on"]), "%d %b, %Y")
+            item['created_at'] = datetime.datetime.strftime((item["created_at"]), "%d %b, %Y")
+            item['updated_at'] = datetime.datetime.strftime((item["updated_at"]), "%d %b, %Y")
             items.append(item)
         return dict({
             'status':200,
             'message':"Success",
+            'data': items
         })
     else:
         return dict({
@@ -126,11 +131,13 @@ def get_followed_list(user_id, mysql):
     items = []
     if(len(result) > 0):
         for item in result:
-            item['created_on'] = datetime.datetime.strftime((item["created_on"]), "%d %b, %Y")
+            item['created_at'] = datetime.datetime.strftime((item["created_at"]), "%d %b, %Y")
+            item['updated_at'] = datetime.datetime.strftime((item["updated_at"]), "%d %b, %Y")
             items.append(item)
         return dict({
             'status':200,
             'message':"Success",
+            'data' : items
         })
     else:
         return dict({

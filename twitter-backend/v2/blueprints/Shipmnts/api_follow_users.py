@@ -14,7 +14,7 @@ mysql = MySQL()
 @api_follow_users.route("/get", methods=['GET'])
 def getUsersList():
 
-    user_id = request.form.get('user_id')
+    user_id = request.args.get('user_id')
 
     get_followed_users_list =  get_followed_list(user_id,mysql)
 
@@ -24,15 +24,15 @@ def getUsersList():
 
     total_users = get_total_users['data']
 
-    unfollowed_users = set(total_users) - set(followed_list)
+    # unfollowed_users = set(total_users) - set(followed_list)
 
-    unfollowed_list = list(unfollowed_users)
+    # unfollowed_list = list(unfollowed_users)
 
     return({
         "status":200,
         "message" : "Users List",
-        "followed_users" : followed_list,
-        "unfollowed_users" : unfollowed_list
+        "followed_users" : get_total_users,
+        # "unfollowed_users" : total_users
     })
 
 

@@ -17,7 +17,7 @@ function TweetBox(getTweets) {
     .then(resp => {
         if (resp?.data?.status === 200) {
           setTweetMessage("");
-          getTweets()
+          // getTweets()
         }
     })
 

@@ -24,9 +24,9 @@ def created_app():
 
     #Staging
     main_app.config['MYSQL_PASSWORD'] = 'root1234'  
-    main_app.config['MYSQL_HOST'] = '35.200.165.249' 
+    main_app.config['MYSQL_HOST'] = '34.93.56.150' 
 
-    main_app.config['MYSQL_DB'] = 'test'
+    main_app.config['MYSQL_DB'] = 'shipmnts'
     main_app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
     mysql = MySQL(main_app)

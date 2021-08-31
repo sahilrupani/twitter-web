@@ -13,8 +13,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # only ERRORS are printed
 warnings.filterwarnings('ignore')
 from flask_cors import CORS
 import json
-import numpy as np
-import boto3
 from flask_mysqldb import MySQL
 
 
@@ -25,8 +23,7 @@ CORS(app)
 
 
 mysql = MySQL() 
-# app.register_blueprint(external_api)
-# s3 = boto3.resource('s3', aws_access_key_id=os.getenv('share.aws.access.id'),aws_secret_access_key=os.getenv('share.aws.secret.key'))
+
 
 
 

@@ -25,9 +25,9 @@ function Login() {
             }else if (resp?.data?.status === 200) {
                 setUserId(resp.data.user_id)
                 
-                document.cookie = `emailId=${email}; path=/`;
-                document.cookie = `userId=${userId}; path=/`;
-                document.cookie = `auth_token=${resp.data?.auth_token}; path=/`;
+                document.cookie = `emailId=${resp?.data?.email_id}; path=/`;
+                document.cookie = `userId=${resp?.data?.user_id}; path=/`;
+                document.cookie = `auth_token=${resp.data?.sso_token}; path=/`;
                 
                 window.location.replace("http://localhost:3000/home")
             }
@@ -43,11 +43,11 @@ function Login() {
             if (resp?.data?.status !== 200) {
                 setValidEmail(true)
             }else if (resp?.data?.status === 200) {
-                setUserId(resp.data.user_id)
+                setUserId(resp?.data?.data?.user_id)
                 
-                document.cookie = `emailId=${email}; path=/`;
-                document.cookie = `userId=${userId}; path=/`;
-                document.cookie = `auth_token=${resp.data?.auth_token}; path=/`;
+                document.cookie = `emailId=${resp?.data?.data?.email_id}; path=/`;
+                document.cookie = `userId=${resp?.data?.data?.user_id}; path=/`;
+                document.cookie = `auth_token=${resp.data?.sso_token}; path=/`;
                 
                 window.location.replace("http://localhost:3000/home")
             }

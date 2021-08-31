@@ -33,7 +33,7 @@ def insertPost():
 @api_posts.route("/get", methods=['GET'])
 def getUsersPost():
 
-    user_id = request.form.get('user_id')
+    user_id = request.args.get('user_id')
 
     api_name = '/api/v1/post/get'
 
